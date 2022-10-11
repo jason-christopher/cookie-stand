@@ -1,10 +1,44 @@
 'use strict';
 
+// Global Values --------------------------------------------------
+
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let hourlyTotals = [];
+let hourlyStaffTotals = [];
+for (let i=0; i < hours.length; i++) {
+  hourlyTotals.push(0);
+}
+let absoluteTotal = 0;
+let absoluteStaffTotal = 0;
+let table = document.querySelectorAll('table');
 
-let sales = document.getElementById('sales');
+// Header Section --------------------------------------------------
 
-// Prototype Section ----------------------------------------------
+function getHeaders(){
+  for (let a = 0; a < table.length; a++){
+    let header = document.createElement('tr');
+    header.setAttribute('class','tableHeader');
+    table[a].appendChild(header);
+    let th = document.createElement('th');
+    th.setAttribute('class','tableHeader');
+    th.innerText = 'Location';
+    header.appendChild(th);
+    for (let i=0; i < hours.length; i++) {
+      let th = document.createElement('th');
+      th.setAttribute('class','tableHeader');
+      th.innerText = `${hours[i]}`;
+      header.appendChild(th);
+    }
+    let total = document.createElement('th');
+    total.setAttribute('class','tableHeader');
+    total.innerText = 'Daily Location Total';
+    header.appendChild(total);
+  }
+}
+
+getHeaders();
+
+// Constructor Function ----------------------------------------------
 
 function Location (name, min, max, avg) {
   this.name = name;
@@ -12,51 +46,118 @@ function Location (name, min, max, avg) {
   this.max = max;
   this.avg = avg;
   this.cookieTotal = 0;
+  this.staffTotal = 0;
   this.customersPerHour = [];
   this.cookiesPerHour = [];
+  this.staffPerHour = [];
+  this.getData = function(){
+    for (let i=0; i < hours.length; i++){
+      this.customersPerHour[i] = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+      this.cookiesPerHour[i] = Math.ceil(this.avg * this.customersPerHour[i]);
+      this.cookieTotal += this.cookiesPerHour[i];
+      if(this.customersPerHour[i] / 20 < 2){
+        this.staffPerHour[i] = 2;
+      } else {
+        this.staffPerHour[i] = Math.ceil(this.customersPerHour[i] / 20);
+      }
+      this.staffTotal += this.staffPerHour[i];
+      hourlyTotals[i] += this.cookiesPerHour[i];
+      absoluteTotal += this.cookiesPerHour[i];
+      hourlyStaffTotals[i] += this.staffPerHour[i];
+      absoluteStaffTotal += this.staffPerHour[i];
+    }
+  };
+  this.render = function() {
+    for (let a = 0; a < table.length; a++){
+      let row = document.createElement('tr');
+      row.setAttribute('class',`${this.name}Data`);
+      table[a].appendChild(row);
+      let td = document.createElement('td');
+      td.setAttribute('class',`${this.name}Data`);
+      td.innerText = `${this.name}`;
+      row.appendChild(td);
+
+      // creates <td class="(Name)Data"> xxx cookies </td> on the row x14
+      if(a === 0){
+        for (let i=0; i < hours.length; i++){
+          let td = document.createElement('td');
+          td.setAttribute('class',`${this.name}Sales`);
+          td.innerText = `${this.cookiesPerHour[i]}`;
+          row.appendChild(td);
+        }
+      } else if (a === 1){
+        for (let i=0; i < hours.length; i++){
+          let td = document.createElement('td');
+          td.setAttribute('class',`${this.name}Staff`);
+          td.innerText = `${this.staffPerHour[i]}`;
+          row.appendChild(td);
+        }
+      } else {
+        return 'Error';
+      }
+
+      // creates <td class="totals"> xxx cookies </td> on last element of the row
+
+      let total = document.createElement('td');
+      total.setAttribute('class','totals');
+      if(a === 0){
+        total.innerText = `${this.cookieTotal}`;
+      } else if (a === 1) {
+        total.innerText = `${this.staffTotal}`;
+      } else {
+        return 'Error';
+      }
+      row.appendChild(total);
+    }
+  };
+  this.getData();
+  this.render();
 }
 
-Location.prototype.getData = function () {
-  let ul = document.createElement('ul');
-  ul.setAttribute('class',`${this.name}Data`);
-  ul.innerText = `${this.name} Data`;
-  sales.appendChild(ul);
-  for (let i=0; i < hours.length; i++){
-    this.customersPerHour[i] = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-    this.cookiesPerHour[i] = Math.floor(this.avg * this.customersPerHour[i]);
-    this.cookieTotal += this.cookiesPerHour[i];
-    let li = document.createElement('li');
-    li.setAttribute('class',`${this.name}Data`);
-    li.innerText = `${hours[i]}: ${this.cookiesPerHour[i]} cookies`;
-    sales.appendChild(li);
-  }
-  let total = document.createElement('li');
-  total.setAttribute('class','totals');
-  total.innerText = `Total: ${this.cookieTotal} cookies`;
-  sales.appendChild(total);
-};
+// Footer Section --------------------------------------------------
 
-// Seattle Section ----------------------------------------------
+function getFooter(){
+  for (let a = 0; a < table.length; a++){
+    let footer = document.createElement('tr');
+    footer.setAttribute('class','tableFooter');
+    table[a].appendChild(footer);
+    let th = document.createElement('th');
+    th.setAttribute('class','tableFooter');
+    th.innerText = 'Totals';
+    footer.appendChild(th);
+    for (let i=0; i < hours.length; i++) {
+      let th = document.createElement('th');
+      th.setAttribute('class','tableHeader');
+      if(a === 0){
+        th.innerText = `${hourlyTotals[i]}`;
+      } else if (a === 1) {
+        th.innerText = `${hourlyStaffTotals[i]}`;
+      } else {
+        return 'Error';
+      }
+      footer.appendChild(th);
+    }
+    let total = document.createElement('th');
+    total.setAttribute('class','tableFooter');
+    if (a === 0) {
+      total.innerText = `${absoluteTotal}`;
+    } else if (a === 1) {
+      total.innerText = `${absoluteStaffTotal}`;
+    } else {
+      return 'Error';
+    }
+    footer.appendChild(total);
+  }
+}
+
+// Location Section ----------------------------------------------
 
 let seattle = new Location('Seattle', 23, 65, 6.3);
-seattle.getData();
-
-// Tokyo Section ----------------------------------------------
-
 let tokyo = new Location('Tokyo', 3, 24, 1.2);
-tokyo.getData();
-
-// Dubai Section ----------------------------------------------
-
 let dubai = new Location('Dubai', 11, 38, 3.7);
-dubai.getData();
-
-// Paris Section ----------------------------------------------
-
 let paris = new Location('Paris', 20, 38, 2.3);
-paris.getData();
-
-// Lima Section
-
 let lima = new Location('Lima', 2, 16, 4.6);
-lima.getData();
+
+// Total Section
+
+getFooter();
