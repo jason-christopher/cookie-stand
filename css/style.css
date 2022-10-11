@@ -22,12 +22,12 @@ h2{
   color: black;
 }
 
-#seattleData, #dubaiData, #limaData{
+.SeattleData, .DubaiData, .LimaData{
   background-color: lightgreen;
   color: darkblue;
 }
 
-#tokyoData, #parisData{
+.TokyoData, .ParisData{
   background-color: lightblue;
   color: purple;
 }

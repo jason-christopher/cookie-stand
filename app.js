@@ -2,157 +2,61 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-// Seattle Section ----------------------------------------------
+let sales = document.getElementById('sales');
 
-let seattle = {
-  name: 'Seattle',
-  min: 23,
-  max: 65,
-  avg: 6.3,
-  cookieTotal: 0,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  getRandomCustomers: function() {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  }
-};
+// Prototype Section ----------------------------------------------
 
-let seattleData = document.getElementById('seattleData');
-
-for (let i=0; i < hours.length; i++){
-  seattle.customersPerHour[i] = seattle.getRandomCustomers();
-  seattle.cookiesPerHour[i] = Math.floor(seattle.avg * seattle.customersPerHour[i]);
-  seattle.cookieTotal += seattle.cookiesPerHour[i];
-  let li = document.createElement('li');
-  li.innerText = `${hours[i]}: ${seattle.cookiesPerHour[i]} cookies`;
-  seattleData.appendChild(li);
+function Location (name, min, max, avg) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avg = avg;
+  this.cookieTotal = 0;
+  this.customersPerHour = [];
+  this.cookiesPerHour = [];
 }
 
-let seattleTotal = document.createElement('li');
-seattleTotal.setAttribute('class','totals');
-seattleTotal.innerText = `Total: ${seattle.cookieTotal} cookies`;
-seattleData.appendChild(seattleTotal);
+Location.prototype.getData = function () {
+  let ul = document.createElement('ul');
+  ul.setAttribute('class',`${this.name}Data`);
+  ul.innerText = `${this.name} Data`;
+  sales.appendChild(ul);
+  for (let i=0; i < hours.length; i++){
+    this.customersPerHour[i] = Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
+    this.cookiesPerHour[i] = Math.floor(this.avg * this.customersPerHour[i]);
+    this.cookieTotal += this.cookiesPerHour[i];
+    let li = document.createElement('li');
+    li.setAttribute('class',`${this.name}Data`);
+    li.innerText = `${hours[i]}: ${this.cookiesPerHour[i]} cookies`;
+    sales.appendChild(li);
+  }
+  let total = document.createElement('li');
+  total.setAttribute('class','totals');
+  total.innerText = `Total: ${this.cookieTotal} cookies`;
+  sales.appendChild(total);
+};
+
+// Seattle Section ----------------------------------------------
+
+let seattle = new Location('Seattle', 23, 65, 6.3);
+seattle.getData();
 
 // Tokyo Section ----------------------------------------------
 
-let tokyo = {
-  name: 'Tokyo',
-  min: 3,
-  max: 24,
-  avg: 1.2,
-  cookieTotal: 0,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  getRandomCustomers: function() {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  }
-};
-
-let tokyoData = document.getElementById('tokyoData');
-
-for (let i=0; i < hours.length; i++){
-  tokyo.customersPerHour[i] = tokyo.getRandomCustomers();
-  tokyo.cookiesPerHour[i] = Math.floor(tokyo.avg * tokyo.customersPerHour[i]);
-  tokyo.cookieTotal += tokyo.cookiesPerHour[i];
-  let li = document.createElement('li');
-  li.innerText = `${hours[i]}: ${tokyo.cookiesPerHour[i]} cookies`;
-  tokyoData.appendChild(li);
-}
-
-let tokyoTotal = document.createElement('li');
-tokyoTotal.setAttribute('class','totals');
-tokyoTotal.innerText = `Total: ${tokyo.cookieTotal} cookies`;
-tokyoData.appendChild(tokyoTotal);
+let tokyo = new Location('Tokyo', 3, 24, 1.2);
+tokyo.getData();
 
 // Dubai Section ----------------------------------------------
 
-let dubai = {
-  name: 'Dubai',
-  min: 11,
-  max: 38,
-  avg: 3.7,
-  cookieTotal: 0,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  getRandomCustomers: function() {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  }
-};
-
-let dubaiData = document.getElementById('dubaiData');
-
-for (let i=0; i < hours.length; i++){
-  dubai.customersPerHour[i] = dubai.getRandomCustomers();
-  dubai.cookiesPerHour[i] = Math.floor(dubai.avg * dubai.customersPerHour[i]);
-  dubai.cookieTotal += dubai.cookiesPerHour[i];
-  let li = document.createElement('li');
-  li.innerText = `${hours[i]}: ${dubai.cookiesPerHour[i]} cookies`;
-  dubaiData.appendChild(li);
-}
-
-let dubaiTotal = document.createElement('li');
-dubaiTotal.setAttribute('class','totals');
-dubaiTotal.innerText = `Total: ${dubai.cookieTotal} cookies`;
-dubaiData.appendChild(dubaiTotal);
+let dubai = new Location('Dubai', 11, 38, 3.7);
+dubai.getData();
 
 // Paris Section ----------------------------------------------
 
-let paris = {
-  name: 'Paris',
-  min: 20,
-  max: 38,
-  avg: 2.3,
-  cookieTotal: 0,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  getRandomCustomers: function() {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  }
-};
-
-let parisData = document.getElementById('parisData');
-
-for (let i=0; i < hours.length; i++){
-  paris.customersPerHour[i] = paris.getRandomCustomers();
-  paris.cookiesPerHour[i] = Math.floor(paris.avg * paris.customersPerHour[i]);
-  paris.cookieTotal += paris.cookiesPerHour[i];
-  let li = document.createElement('li');
-  li.innerText = `${hours[i]}: ${paris.cookiesPerHour[i]} cookies`;
-  parisData.appendChild(li);
-}
-
-let parisTotal = document.createElement('li');
-parisTotal.setAttribute('class','totals');
-parisTotal.innerText = `Total: ${paris.cookieTotal} cookies`;
-parisData.appendChild(parisTotal);
+let paris = new Location('Paris', 20, 38, 2.3);
+paris.getData();
 
 // Lima Section
 
-let lima = {
-  name: 'Lima',
-  min: 2,
-  max: 16,
-  avg: 4.6,
-  cookieTotal: 0,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  getRandomCustomers: function() {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
-  }
-};
-
-let limaData = document.getElementById('limaData');
-
-for (let i=0; i < hours.length; i++){
-  lima.customersPerHour[i] = lima.getRandomCustomers();
-  lima.cookiesPerHour[i] = Math.floor(lima.avg * lima.customersPerHour[i]);
-  lima.cookieTotal += lima.cookiesPerHour[i];
-  let li = document.createElement('li');
-  li.innerText = `${hours[i]}: ${lima.cookiesPerHour[i]} cookies`;
-  limaData.appendChild(li);
-}
-
-let limaTotal = document.createElement('li');
-limaTotal.setAttribute('class','totals');
-limaTotal.innerText = `Total: ${lima.cookieTotal} cookies`;
-limaData.appendChild(limaTotal);
+let lima = new Location('Lima', 2, 16, 4.6);
+lima.getData();
