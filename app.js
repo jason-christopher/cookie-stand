@@ -2,7 +2,7 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-// Seattle Section
+// Seattle Section ----------------------------------------------
 
 let seattle = {
   name: 'Seattle',
@@ -17,12 +17,7 @@ let seattle = {
   }
 };
 
-let seattleDiv = document.createElement('div');
-seattleDiv.setAttribute('id', 'seattleDiv');
-document.getElementById('sales').appendChild(seattleDiv);
-let seattleData = document.createElement('ul');
-seattleData.innerText = `${seattle.name} Data`;
-seattleDiv.appendChild(seattleData);
+let seattleData = document.getElementById('seattleData');
 
 for (let i=0; i < hours.length; i++){
   seattle.customersPerHour[i] = seattle.getRandomCustomers();
@@ -34,10 +29,11 @@ for (let i=0; i < hours.length; i++){
 }
 
 let seattleTotal = document.createElement('li');
+seattleTotal.setAttribute('class','totals');
 seattleTotal.innerText = `Total: ${seattle.cookieTotal} cookies`;
 seattleData.appendChild(seattleTotal);
 
-// Tokyo Section
+// Tokyo Section ----------------------------------------------
 
 let tokyo = {
   name: 'Tokyo',
@@ -52,9 +48,7 @@ let tokyo = {
   }
 };
 
-let tokyoData = document.createElement('ul');
-tokyoData.innerText = `${tokyo.name} Data`;
-document.getElementById('sales').appendChild(tokyoData);
+let tokyoData = document.getElementById('tokyoData');
 
 for (let i=0; i < hours.length; i++){
   tokyo.customersPerHour[i] = tokyo.getRandomCustomers();
@@ -66,10 +60,11 @@ for (let i=0; i < hours.length; i++){
 }
 
 let tokyoTotal = document.createElement('li');
+tokyoTotal.setAttribute('class','totals');
 tokyoTotal.innerText = `Total: ${tokyo.cookieTotal} cookies`;
 tokyoData.appendChild(tokyoTotal);
 
-// Dubai Section
+// Dubai Section ----------------------------------------------
 
 let dubai = {
   name: 'Dubai',
@@ -84,9 +79,7 @@ let dubai = {
   }
 };
 
-let dubaiData = document.createElement('ul');
-dubaiData.innerText = `${dubai.name} Data`;
-document.getElementById('sales').appendChild(dubaiData);
+let dubaiData = document.getElementById('dubaiData');
 
 for (let i=0; i < hours.length; i++){
   dubai.customersPerHour[i] = dubai.getRandomCustomers();
@@ -98,10 +91,11 @@ for (let i=0; i < hours.length; i++){
 }
 
 let dubaiTotal = document.createElement('li');
+dubaiTotal.setAttribute('class','totals');
 dubaiTotal.innerText = `Total: ${dubai.cookieTotal} cookies`;
 dubaiData.appendChild(dubaiTotal);
 
-// Paris Section
+// Paris Section ----------------------------------------------
 
 let paris = {
   name: 'Paris',
@@ -116,9 +110,7 @@ let paris = {
   }
 };
 
-let parisData = document.createElement('ul');
-parisData.innerText = `${paris.name} Data`;
-document.getElementById('sales').appendChild(parisData);
+let parisData = document.getElementById('parisData');
 
 for (let i=0; i < hours.length; i++){
   paris.customersPerHour[i] = paris.getRandomCustomers();
@@ -130,6 +122,7 @@ for (let i=0; i < hours.length; i++){
 }
 
 let parisTotal = document.createElement('li');
+parisTotal.setAttribute('class','totals');
 parisTotal.innerText = `Total: ${paris.cookieTotal} cookies`;
 parisData.appendChild(parisTotal);
 
@@ -148,9 +141,7 @@ let lima = {
   }
 };
 
-let limaData = document.createElement('ul');
-limaData.innerText = `${lima.name} Data`;
-document.getElementById('sales').appendChild(limaData);
+let limaData = document.getElementById('limaData');
 
 for (let i=0; i < hours.length; i++){
   lima.customersPerHour[i] = lima.getRandomCustomers();
@@ -162,5 +153,6 @@ for (let i=0; i < hours.length; i++){
 }
 
 let limaTotal = document.createElement('li');
+limaTotal.setAttribute('class','totals');
 limaTotal.innerText = `Total: ${lima.cookieTotal} cookies`;
 limaData.appendChild(limaTotal);
