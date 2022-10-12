@@ -72,13 +72,13 @@ table{
 }
 
 .SeattleData, .DubaiData, .LimaData{
-  background-color: lightgreen;
-  color: darkblue;
+  background-color: salmon;
+  color: black;
 }
 
 .TokyoData, .ParisData{
-  background-color: lightblue;
-  color: brown;
+  background-color: ghostwhite;
+  color: black;
 }
 
 .totals{
@@ -87,7 +87,7 @@ table{
 
 .tableHeader, .tableFooter{
   font-weight: bold;
-  background-color: blanchedalmond;
+  background-color: lightgray;
 }
 
 footer{

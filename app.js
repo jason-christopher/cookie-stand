@@ -10,7 +10,7 @@ for (let i=0; i < hours.length; i++) {
   hourlyTotals.push(0);
   hourlyStaffTotals.push(0);
 }
-let absoluteTotal = 0;
+let absoluteSalesTotal = 0;
 let absoluteStaffMax = 0;
 let table = document.querySelectorAll('table');
 
@@ -70,7 +70,7 @@ function Location (name, min, max, avg) {
         this.staffMax = this.staffPerHour[i];
       }
       hourlyTotals[i] += this.cookiesPerHour[i];
-      absoluteTotal += this.cookiesPerHour[i];
+      absoluteSalesTotal += this.cookiesPerHour[i];
       hourlyStaffTotals[i] += this.staffPerHour[i];
       if(hourlyStaffTotals[i] > absoluteStaffMax) {
         absoluteStaffMax = hourlyStaffTotals[i];
@@ -86,8 +86,6 @@ function Location (name, min, max, avg) {
       td.setAttribute('class',`${this.name}Data`);
       td.innerText = `${this.name}`;
       row.appendChild(td);
-
-      // creates <td class="(Name)Data"> xxx cookies </td> on the row x14
 
       if(a === 0){
         for (let i=0; i < hours.length; i++){
@@ -106,8 +104,6 @@ function Location (name, min, max, avg) {
       } else {
         return 'Error';
       }
-
-      // creates <td class="totals"> xxx cookies </td> on last element of the row
 
       let total = document.createElement('td');
       total.setAttribute('class','totals');
@@ -151,7 +147,7 @@ function getFooter(){
     let total = document.createElement('th');
     total.setAttribute('class','tableFooter');
     if (a === 0) {
-      total.innerText = `${absoluteTotal}`;
+      total.innerText = `${absoluteSalesTotal}`;
     } else if (a === 1) {
       total.innerText = `${absoluteStaffMax}`;
     } else {
