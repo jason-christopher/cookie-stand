@@ -25,6 +25,24 @@
     </nav>
   </header>
   <main>
+    <form>
+      <fieldset id="location">
+        <label>Location:*
+          <input type="text" id="name" name="location_name" placeholder="City Name" required/>
+        </label>
+        <label>Minimum Customers Per Hour:*
+          <input type="text" id="min" name="min_customers" placeholder="Number" required/>
+        </label>
+        <label>Maximum Customers Per Hour:*
+          <input type="text" id="max" name="max_customers" placeholder="Number" required/>
+        </label>
+        <label for="avg">Average Cookies Purchased Per Customer:*
+          <input type="text" id="avg" name="avg_cookies" placeholder="Number" required/>
+        </label>
+        <p>*Required</p>
+        <button type="submit">Submit</button>
+      </fieldset>
+    </form>
     <table id="sales"><h3>Sales Data</h3></table>
     <table id="staff"><h3>Staffing</h3></table>
   </main>
