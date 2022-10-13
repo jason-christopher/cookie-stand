@@ -59,11 +59,60 @@ a:hover{
 
 main{
   font-size: 30px;
-  margin-top: 30px;
+}
+
+form{
+  width: 700px;
+  margin: 10px auto;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 25px;
+  background-image: linear-gradient(to right, gray, white, gray);
+  box-shadow: 1px 1px 5px;
+}
+
+label{
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+}
+
+input{
+  margin-left: 10px;
+  border: 2px solid black;
+  vertical-align: bottom;
+  color: black;
+}
+
+form p{
+  font-size: 20px;
+  color: red;
+}
+
+button{
+  font-size: 20px;
+  font-family: 'Oswald';
+  padding: 0px 20px;
+  margin: 5px 0px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: salmon;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover{
+  background-color: white;
+}
+
+button:active{
+  background-color: salmon;
+  opacity: 0.5;
 }
 
 h3{
   font-size: 30px;
+  margin-top: 30px;
 }
 
 table, th, td, tr{
@@ -75,17 +124,17 @@ table, th, td, tr{
 }
 
 table{
-  box-shadow: 2px 2px 2px;
+  box-shadow: 2px 2px 5px;
   margin-bottom: 50px;
   font-family:  Helvetica, Arial, sans-serif
 }
 
-.SeattleData, .DubaiData, .LimaData{
+tr:nth-child(even){
   background-color: salmon;
   color: black;
 }
 
-.TokyoData, .ParisData{
+tr:nth-child(odd){
   background-color: ghostwhite;
   color: black;
 }

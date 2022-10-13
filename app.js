@@ -80,24 +80,20 @@ function Location (name, min, max, avg) {
   this.render = function() {
     for (let a = 0; a < table.length; a++){
       let row = document.createElement('tr');
-      row.setAttribute('class',`${this.name}Data`);
       table[a].appendChild(row);
       let td = document.createElement('td');
-      td.setAttribute('class',`${this.name}Data`);
       td.innerText = `${this.name}`;
       row.appendChild(td);
 
       if(a === 0){
         for (let i=0; i < hours.length; i++){
           let td = document.createElement('td');
-          td.setAttribute('class',`${this.name}Sales`);
           td.innerText = `${this.cookiesPerHour[i]}`;
           row.appendChild(td);
         }
       } else if (a === 1){
         for (let i=0; i < hours.length; i++){
           let td = document.createElement('td');
-          td.setAttribute('class',`${this.name}Staff`);
           td.innerText = `${this.staffPerHour[i]}`;
           row.appendChild(td);
         }
@@ -165,6 +161,29 @@ let dubai = new Location('Dubai', 11, 38, 3.7);
 let paris = new Location('Paris', 20, 38, 2.3);
 let lima = new Location('Lima', 2, 16, 4.6);
 
-// Total Section
+// Total Section -------------------------------------------------
 
 getFooter();
+
+// Form Event Handler --------------------------------------------
+
+let form = document.querySelector('form');
+
+let handleSubmit = function(event) {
+  event.preventDefault();
+  let location = event.target.location_name.value;
+  if(location === seattle.name || location === tokyo.name || location === dubai.name || location === paris.name || location === lima.name){
+    alert('That location has already been added');
+    return;
+  }
+  let min = parseInt(event.target.min_customers.value);
+  let max = parseInt(event.target.max_customers.value);
+  let avg = parseInt(event.target.avg_cookies.value);
+  for (let a = 0; a < table.length; a++){
+    table[a].deleteRow(-1);
+  }
+  let newLocation = new Location(location, min, max, avg);
+  getFooter();
+};
+
+form.addEventListener('submit', handleSubmit);
