@@ -5,7 +5,7 @@ body{
   background-image: linear-gradient(salmon, red, salmon);
   color: black;
   text-align: center;
-  font-family: 'Times New Roman', Times, serif
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,7 +117,7 @@ footer{
 }
 
 .last-item1{
-  padding-bottom: 80px;
+  padding-bottom: 60px;
 }
 
 .last-item2{

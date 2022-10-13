@@ -5,65 +5,220 @@ body{
   background-image: linear-gradient(salmon, red, salmon);
   color: black;
   text-align: center;
-  font-family: 'Play'
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Play', sans-serif;
+  font-family: 'Sansita', sans-serif;
+  font-weight: 900;
+  color:gold;
+  text-shadow: black 2px 2px 2px;
+}
+
+header{
+  width: 1200px;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+header div{
+  display: flex;
+  justify-content: space-between;
 }
 
 h1{
-  font-weight: 800;
   font-size: 60px;
-  margin: 10px 80px 10px 80px;
-  font-style: italic;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 #fish{
-  width: 300px;
-  margin: 10px auto 10px auto;
-  vertical-align: middle;
+  width: 200px;
 }
 
 nav{
-  width: 60%;
-  margin: 0px auto 0px auto;
-  border: 5px solid black;
+  font-size: 40px;
+  font-family: 'Oswald';
+  font-weight: 900;
+  text-shadow: black 2px 2px 2px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid black;
   border-radius: 5px;
-  font-size: 30px;
-  background-image: linear-gradient(to right, grey, white, grey);
-  text-align: left;
+  background-image: linear-gradient(to right, black, red, black);
 }
 
 a{
-  color: black;
+  color: white;
   text-decoration: none;
   transition: 0.2s;
-  padding: 5px 0px 5px 100px;
 }
 
 a:hover{
-  color: red;
+  color: gold;
 }
 
-
-#constructionText{
-  font-weight: bold;
-  font-size: 50px;
-  padding: 20px;
+main{
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px auto 15px auto;
 }
 
-#constructionPic{
-  width: 40%;
-  border: 2px solid black;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px;
+main img{
+  margin: 15px;
+  object-fit: cover;
+}
+
+main div{
+  position: relative;
+}
+
+article{
+  font-size: 25px;
+  padding: 10px;
+}
+
+#familyPic{
+  height: 500px;
+  width: 670px;
+}
+
+#familyArticle{
+  position: absolute;
+  background-color: rgba(23, 14, 14, 0.6);
+  color: white;
+  text-shadow: black 1px 1px 1px;
+  width: 650px;
+  bottom: 17px;
+  left: 15px;
+}
+
+#cutterPic{
+  height: 500px;
+  width: 470px;
+}
+
+#cutterArticle{
+  position: absolute;
+  background-color: rgba(224, 223, 226, 0.5);
+  width: 450px;
+  top: 15px;
+  left: 15px;
+}
+
+#shirtPic{
+  height: 100px;
+  position: absolute;
+  bottom: 3px;
+  right: 0px;
+}
+
+#shirtArticle{
+  position: absolute;
+  background-color: rgba(224, 223, 226, 0.5);
+  font-size: 15px;
+  width: 350px;
+  bottom: 18px;
+  left: 15px;
+  text-align: right;
+}
+
+#fishPic{
+  height: 500px;
+  width: 470px;
+  object-fit: fill;
+}
+
+#fishArticle{
+  position: absolute;
+  background-color: rgba(224, 223, 226, 0.7);
+  width: 450px;
+  top: 15px;
+  left: 15px;
+}
+
+#frostedCookiePic{
+  height: 500px;
+  width: 670px;
+  object-fit: fill;
+}
+
+#frostedCookieArticle{
+  position: absolute;
+  background-color: rgba(23, 14, 14, 0.5);
+  color: white;
+  width: 650px;
+  bottom: 17px;
+  left: 15px;
 }
 
 footer{
+  width: 1200px;
+  display: flex;
+  justify-content: center;
   text-align: center;
-  margin-top: 40px;
+  margin: 0 auto;
+  padding-top: 20px;
+  font-size: 20px;
+  background-image: linear-gradient(to right, black, red, black);
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.footer-section{
+  flex: 1;
+}
+
+.last-item1{
+  padding-bottom: 60px;
+}
+
+.last-item2{
+  padding-bottom: 20px;
+}
+
+footer p{
+  padding: 5px;
+  color: white;
+}
+
+.footer-title{
+  line-height: 25px;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 30px;
+  color:yellow;
+  text-shadow: black 1px 1px 1px;
+}
+
+footer section{
+  display: flex;
+  justify-content: center;
+}
+
+footer div img{
+  width: 500px;
+  margin: 10px;
+}
+
+footer section img{
+  width: 80px;
+  height: 80px;
+  margin: 10px 30px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+footer section img:hover{
+  opacity: 0.4;
+}
+
+footer section img:active{
+  opacity: 0.9;
+}
+
+h5{
+  color: yellow;
   font-size: 25px;
+  padding-bottom: 30px;
 }
