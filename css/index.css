@@ -5,11 +5,11 @@ body{
   background-image: linear-gradient(salmon, red, salmon);
   color: black;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Play'
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Play', sans-serif;
 }
 
 h1{
